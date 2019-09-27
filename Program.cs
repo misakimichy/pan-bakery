@@ -26,6 +26,17 @@ namespace PanBakery
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("\nHere is the lists of breads and pastries that we have.");
 
+            Console.WriteLine("\nPan Bakery's Breads");
+            foreach(Bread bread in Breads)
+            {
+                Console.WriteLine($"- {bread.BreadName}: ${bread.BreadPrice}");
+            }
+
+            Console.WriteLine("\nPan Bakery's Pastries");
+            foreach(Pastry pastry in Pastries)
+            {
+                Console.WriteLine($"- {pastry.PastryName}: ${pastry.PastryPrice}");
+            }
         }
     }
 }
