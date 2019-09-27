@@ -37,6 +37,29 @@ namespace PanBakery
             {
                 Console.WriteLine($"- {pastry.PastryName}: ${pastry.PastryPrice}");
             }
+
+            Console.WriteLine("\nWould you like to buy some breads?(Y/N");
+            Console.WriteLine("Please type Yes for 'Y', No for 'N'");
+            string userInput = Console.ReadLine().ToUpper();
+            if (userInput == "Y")
+            {
+                Console.WriteLine("\nPlease enter a number that you'd like to purchase.");
+                for(int i = 0; i < Breads.Count; i++)
+                {
+                    Console.WriteLine($"{i}: {Breads[i].BreadName} ${Breads[i].BreadPrice}");
+                }
+                int id = int.Parse(Console.ReadLine());
+
+            }
+            else if (userInput == "N")
+            {
+                Console.WriteLine("\nPlease enter a number that you'd like to purchase.");
+                for(int i = 0; i < Breads.Count; i++)
+                {
+                    Console.WriteLine($"{i}: {Breads[i].BreadName}");
+                }
+                int id = int.Parse(Console.ReadLine());
+            }
         }
     }
 }
