@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace PanBakery.Models
 {
@@ -6,13 +7,11 @@ namespace PanBakery.Models
     {
         public string BreadName { get; set; }
         public int BreadPrice { get; set; }
-        public int BreadCount { get; set; }
 
         public Bread (string breadName)
         {
-            BreadName = breadName;
+            BreadName = "Baguette";
             BreadPrice = 5;
-            BreadCount = 0;
         }
     }
 
@@ -20,12 +19,10 @@ namespace PanBakery.Models
     {
         public string PastryName { get; set; }
         public int PastryPrice { get; set; }
-        public int PastryCount { get; set; }
         public Pastry (string pastryName)
         {
-            PastryName = pastryName;
+            PastryName = "Croissant";
             PastryPrice = 2;
-            PastryCount = 0;
         }
     }
 
@@ -39,24 +36,57 @@ namespace PanBakery.Models
             Breads = new List<Bread>();
             Pastries = new List<Pastry>();
         }
-        public void CountBread(int BreadAmount)
+        // Takes user's bread purchase amount as parameter
+        public void CountBread(int breadAmount)
         {
             // Loop through and add to the bread list
-            for(int i = 0; i < BreadAmount; i++)
+            for(int i = 0; i < breadAmount; i++)
             {
                 Bread bread = new Bread();
                 Breads.Add(bread);
             }
         }
 
-        public void CountPastry(int PastryAmount)
+        // Takes user's pastry purchase amount as parameter
+        public void CountPastry(int pastryAmount)
         {
             // Loop through and add to the pastry list
-            for(int i = 0; i < PastryAmount; i++)
+            for(int i = 0; i < pastryAmount; i++)
             {
                 Pastry pastry = new Pastry();
                 Pastries.Add(pastry);
             }
+        }
+
+        // Function to return total price of bread and pastry.
+        public int CalcTotal()
+        {
+            int breadTotalPrice = 0;
+            int pastryTotalPrice = 0;
+            // Bread -  Buy 2, get 1 free.
+            // Increment BreadPrice only when it's first and second bread.
+            for (int i = 1; i < Breads.Count; i++)
+            {
+                if(i % 3 != 0)
+                {
+                    breadTotalPrice += Breads[i].BreadPrice;
+                }
+            }
+            // Pastry - Buy 1 for $2 or 3 for $5.
+            // Third pastry price is going to half.
+            for (int j = 1; j < Pastries.Count; j++)
+            {
+                if(j % 3 != 0)
+                {
+                    pastryTotalPrice += Pastries[j].PastryPrice;
+                }
+                else
+                {
+                    pastryTotalPrice += Pastries[j].PastryPrice / 2;
+                }
+            }
+            int totalAmount = breadTotalPrice + pastryTotalPrice;
+            return  totalAmount;
         }
     }
 }
