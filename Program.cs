@@ -19,9 +19,18 @@ namespace PanBakery
             userInput = Console.ReadLine().ToUpper();
             if (userInput == "Y")
             {
-                Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
-                breadCount = int.Parse(Console.ReadLine());
-                newOrder.CountBread(breadCount);
+                PurchaseBread();
+                // Check if the input is a number or not
+                bool breadInput = Int32.TryParse(Console.ReadLine(), out breadCount);
+                if (breadInput)
+                {
+                    newOrder.CountBread(breadCount);
+                }
+                else
+                {
+                    EnterValid();
+                    PurchaseBread();
+                }
             }
             else if (userInput == "N")
             {
@@ -52,11 +61,23 @@ namespace PanBakery
                 userInput = Console.ReadLine().ToUpper();
             }
             purchasePastry: PurchasePastry();
+            // Check if the input is a number or not
+            bool pastryInput = Int32.TryParse(Console.ReadLine(), out pastryCount);
+            if (pastryInput)
+            {
+                newOrder.CountPastry(pastryCount);
+            }
+            else
+            {
+                EnterValid();
+                PurchasePastry();
+            }
             pastryCount = int.Parse(Console.ReadLine());
             newOrder.CountPastry(pastryCount);
             totalAmount = newOrder.CalculateTotal();
             showReceipt(breadCount, pastryCount, totalAmount);
         }
+
         public static void InitMessage()
         {
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -78,6 +99,10 @@ namespace PanBakery
         public static void AskPastry()
         {
             Console.WriteLine("Would you like to buy some pastries?(Y/N)");
+        }
+        public static void PurchaseBread()
+        {
+            Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
         }
         public static void PurchasePastry()
         {
