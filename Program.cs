@@ -28,7 +28,7 @@ namespace PanBakery
                 }
                 else
                 {
-                    EnterValid();
+                    EnterValidNumber();
                     PurchaseBread();
                 }
             }
@@ -69,13 +69,11 @@ namespace PanBakery
             }
             else
             {
-                EnterValid();
+                EnterValidNumber();
                 PurchasePastry();
             }
-            pastryCount = int.Parse(Console.ReadLine());
-            newOrder.CountPastry(pastryCount);
-            totalAmount = newOrder.CalculateTotal();
-            showReceipt(breadCount, pastryCount, totalAmount);
+                totalAmount = newOrder.CalculateTotal();
+                showReceipt(breadCount, pastryCount, totalAmount);
         }
 
         public static void InitMessage()
@@ -91,6 +89,10 @@ namespace PanBakery
         public static void EnterValid()
         {
             Console.WriteLine("Please type 'Y' for Yes, 'N' for No.");
+        }
+        public static void EnterValidNumber()
+        {
+            Console.WriteLine("Please enter number to purchase.");
         }
         public static void AskBread()
         {
