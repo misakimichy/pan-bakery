@@ -9,10 +9,10 @@ namespace PanBakery
         public static void Main()
         {
             string userInput;
-            // int breadCount;
-            // int pastryCount;
+            int breadCount;
+            int pastryCount;
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine("    Welcome to the Pan Bakery!  ");
+            Console.WriteLine("    Welcome to the Pan Bakery!   ");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("\nHere is the list of our breads and pastries.");
             Console.WriteLine("Each bread is $5. Buy 2, get 1 free!");
@@ -23,29 +23,13 @@ namespace PanBakery
             userInput = Console.ReadLine().ToUpper();
             if (userInput == "Y")
             {
-                PurchaseBread();
-                userInput = Console.ReadLine().ToUpper();
-                if (userInput == "Y")
-                {
-                    Console.Write("How many breads do you want to purchase?");
-                    int countBread = int.Parse(Console.ReadLine());
-                }
-                else if (userInput == "N")
-                {
-                    goto purchasePastry;
-                }
-                // When use types besides 'Y' or 'N'
-                else
-                {
-                    EnterValid();
-                    PurchaseBread();
-                    userInput = Console.ReadLine().ToUpper();
-                }
+                Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
+                breadCount = int.Parse(Console.ReadLine());
             }
             else if (userInput == "N")
             {
                 AskPastry();
-                userInput = Console.ReadLine().ToUpper();
+                pastryCount = Console.ReadLine().ToUpper();
                 if (userInput == "Y")
                 {
                     goto purchasePastry;
@@ -71,6 +55,7 @@ namespace PanBakery
                 userInput = Console.ReadLine().ToUpper();
             }
             purchasePastry: PurchasePastry();
+            pastryCount = int.Parse(Console.ReadLine());
         }
         public static void EnterValid(){
             Console.WriteLine("Please type 'Y' for Yes, 'N' for No.");
@@ -83,14 +68,9 @@ namespace PanBakery
         {
             Console.WriteLine("Would you like to buy some pastries?(Y/N)");
         }
-        public static void PurchaseBread()
-        {
-            Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
-        }
         public static void PurchasePastry()
         {
-            Console.WriteLine("\nPlease enter a number that you'd like to purchase.");
-            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine("\nHow many pastries would you like to purchase.");
         }
     }
 }
