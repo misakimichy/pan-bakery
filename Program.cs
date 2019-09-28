@@ -6,18 +6,18 @@ namespace PanBakery
 {
     class Program
     {
-        public static Bread bread1 = new Bread("White bread");
-        public static Bread bread2 = new Bread("Sourdough");
-        public static Bread bread3 = new Bread("Baguette");
-        public static Bread bread4 = new Bread("Focaccia");
-        public static List<Bread> Breads = new List<Bread>() { bread1, bread2, bread3, bread4 };
+        // public static Bread bread1 = new Bread("White bread");
+        // public static Bread bread2 = new Bread("Sourdough");
+        // public static Bread bread3 = new Bread("Baguette");
+        // public static Bread bread4 = new Bread("Focaccia");
+        // public static List<Bread> Breads = new List<Bread>() { bread1, bread2, bread3, bread4 };
 
-        public static Pastry pastry1 = new Pastry("Croissant");
-        public static Pastry pastry2 = new Pastry("Pain au chocolat");
-        public static Pastry pastry3 = new Pastry("Cinnamon Roll");
-        public static Pastry pastry4 = new Pastry("Pirozhki");
-        public static List<Pastry> Pastries = new List<Pastry>() { pastry1, pastry2, pastry3, pastry4 };
-        public static string userInput = "";
+        // public static Pastry pastry1 = new Pastry("Croissant");
+        // public static Pastry pastry2 = new Pastry("Pain au chocolat");
+        // public static Pastry pastry3 = new Pastry("Cinnamon Roll");
+        // public static Pastry pastry4 = new Pastry("Pirozhki");
+        // public static List<Pastry> Pastries = new List<Pastry>() { pastry1, pastry2, pastry3, pastry4 };
+        // public static string userInput = "";
         public static void Main()
         {
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -107,7 +107,7 @@ namespace PanBakery
             Console.WriteLine("\nPlease enter a number that you'd like to purchase.");
             for(int i = 0; i < Breads.Count; i++)
             {
-                Console.WriteLine($"{i}: {Breads[i].BreadName} ${Breads[i].BreadPrice}");
+                Console.WriteLine($"{i}: {Breads[i].BreadName}");
             }
             int id = int.Parse(Console.ReadLine());
             Console.WriteLine("Would you like to buy more bread? (Y/N)");

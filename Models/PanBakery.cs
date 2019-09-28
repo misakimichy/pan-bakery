@@ -14,13 +14,6 @@ namespace PanBakery.Models
             BreadPrice = 5;
             BreadCount = 0;
         }
-
-        public int CalculatePrice()
-        {
-            int breadTotal = 0;
-            int pastryTotal = 0;
-            
-        }
     }
 
     class Pastry
@@ -33,6 +26,37 @@ namespace PanBakery.Models
             PastryName = pastryName;
             PastryPrice = 2;
             PastryCount = 0;
+        }
+    }
+
+    // Backend logic for both Bread and Pastry.
+    class TotalOrder
+    {
+        public List<Bread> Breads { get; set; }
+        public List<Pastry> Pastries { get; set; }
+        public TotalOrder()
+        {
+            Breads = new List<Bread>();
+            Pastries = new List<Pastry>();
+        }
+        public void CountBread(int BreadAmount)
+        {
+            // Loop through and add to the bread list
+            for(int i = 0; i < BreadAmount; i++)
+            {
+                Bread bread = new Bread();
+                Breads.Add(bread);
+            }
+        }
+
+        public void CountPastry(int PastryAmount)
+        {
+            // Loop through and add to the pastry list
+            for(int i = 0; i < PastryAmount; i++)
+            {
+                Pastry pastry = new Pastry();
+                Pastries.Add(pastry);
+            }
         }
     }
 }
