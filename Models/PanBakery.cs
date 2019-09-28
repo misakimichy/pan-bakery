@@ -58,7 +58,7 @@ namespace PanBakery.Models
         }
 
         // Function to return total price of bread and pastry.
-        public int CalcTotal()
+        public int CalculateTotal()
         {
             int breadTotalPrice = 0;
             int pastryTotalPrice = 0;
