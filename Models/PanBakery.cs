@@ -64,18 +64,18 @@ namespace PanBakery.Models
             int pastryTotalPrice = 0;
             // Bread -  Buy 2, get 1 free.
             // Increment BreadPrice only when it's first and second bread.
-            for (int i = 1; i < Breads.Count; i++)
+            for (int i = 0; i < Breads.Count; i++)
             {
-                if(i % 3 != 0)
+                if((i + 1) % 3 != 0)
                 {
                     breadTotalPrice += Breads[i].BreadPrice;
                 }
             }
             // Pastry - Buy 1 for $2 or 3 for $5.
             // Third pastry price is going to half.
-            for (int j = 1; j < Pastries.Count; j++)
+            for (int j = 0; j < Pastries.Count; j++)
             {
-                if(j % 3 != 0)
+                if((j + 1) % 3 != 0)
                 {
                     pastryTotalPrice += Pastries[j].PastryPrice;
                 }
