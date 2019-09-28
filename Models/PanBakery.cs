@@ -7,8 +7,7 @@ namespace PanBakery.Models
     {
         public string BreadName { get; set; }
         public int BreadPrice { get; set; }
-
-        public Bread (string breadName)
+        public Bread ()
         {
             BreadName = "Baguette";
             BreadPrice = 5;
@@ -19,7 +18,7 @@ namespace PanBakery.Models
     {
         public string PastryName { get; set; }
         public int PastryPrice { get; set; }
-        public Pastry (string pastryName)
+        public Pastry ()
         {
             PastryName = "Croissant";
             PastryPrice = 2;
