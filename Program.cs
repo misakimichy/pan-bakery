@@ -58,7 +58,6 @@ namespace PanBakery
                 userInput = Console.ReadLine().ToUpper();
             }
             purchasePastry: PurchasePastry();
-            userInput = Console.ReadLine();
             pastryCount = int.Parse(Console.ReadLine());
             newOrder.CountPastry(pastryCount);
             totalAmount = newOrder.CalculateTotal();
