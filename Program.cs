@@ -6,16 +6,16 @@ namespace PanBakery
 {
     class Program
     {
-        public static Bread bread1 = new Bread("White bread", 3);
-        public static Bread bread2 = new Bread("Sourdough", 4);
-        public static Bread bread3 = new Bread("Baguette", 5);
-        public static Bread bread4 = new Bread("Focaccia", 6);
+        public static Bread bread1 = new Bread("White bread");
+        public static Bread bread2 = new Bread("Sourdough");
+        public static Bread bread3 = new Bread("Baguette");
+        public static Bread bread4 = new Bread("Focaccia");
         public static List<Bread> Breads = new List<Bread>() { bread1, bread2, bread3, bread4 };
 
-        public static Pastry pastry1 = new Pastry("Croissant", 3);
-        public static Pastry pastry2 = new Pastry("Pain au chocolat", 4);
-        public static Pastry pastry3 = new Pastry("Cinnamon Roll", 5);
-        public static Pastry pastry4 = new Pastry("Pirozhki", 6);
+        public static Pastry pastry1 = new Pastry("Croissant");
+        public static Pastry pastry2 = new Pastry("Pain au chocolat");
+        public static Pastry pastry3 = new Pastry("Cinnamon Roll");
+        public static Pastry pastry4 = new Pastry("Pirozhki");
         public static List<Pastry> Pastries = new List<Pastry>() { pastry1, pastry2, pastry3, pastry4 };
         public static string userInput = "";
         public static void Main()
@@ -28,14 +28,19 @@ namespace PanBakery
             Console.WriteLine("\nPan Bakery's Breads");
             foreach(Bread bread in Breads)
             {
-                Console.WriteLine($"- {bread.BreadName}: ${bread.BreadPrice}");
+                Console.WriteLine($"- {bread.BreadName}");
             }
+            Console.WriteLine("Each loaf is $5. Buy 2, get 1 free.");
+            Console.WriteLine("-----------------------------------");
 
             Console.WriteLine("\nPan Bakery's Pastries");
             foreach(Pastry pastry in Pastries)
             {
-                Console.WriteLine($"- {pastry.PastryName}: ${pastry.PastryPrice}");
+                Console.WriteLine($"- {pastry.PastryName}");
             }
+            Console.WriteLine("Buy 1 for $2 or 3 for $5!");
+            Console.WriteLine("-----------------------------------");
+
 
             AskBread();
             if (userInput == "Y")
@@ -43,7 +48,8 @@ namespace PanBakery
                 PurchaseBread();
                 if (userInput == "Y")
                 {
-                    PurchaseBread();
+                    Console.Write("How many breads do you want to purchase?");
+                    int countBread = int.Parse(Console.ReadLine());
                 }
                 else if (userInput == "N")
                 {
@@ -112,7 +118,7 @@ namespace PanBakery
             Console.WriteLine("\nPlease enter a number that you'd like to purchase.");
             for(int i = 0; i < Pastries.Count; i++)
             {
-                Console.WriteLine($"{i}: {Pastries[i].PastryName} ${Pastries[i].PastryPrice}");
+                Console.WriteLine($"{i}: {Pastries[i].PastryName}");
             }
             int id = int.Parse(Console.ReadLine());
             Console.WriteLine("Would you like to buy more pastries? (Y/N)");
