@@ -29,7 +29,7 @@ namespace PanBakery
             else if (userInput == "N")
             {
                 AskPastry();
-                pastryCount = Console.ReadLine().ToUpper();
+                pastryCount = int.Parse(Console.ReadLine());
                 if (userInput == "Y")
                 {
                     goto purchasePastry;
