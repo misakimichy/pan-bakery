@@ -9,6 +9,7 @@ namespace PanBakery
         public static void Main()
         {
             int totalAmount = 0;
+
             TotalOrder newOrder = new TotalOrder();
 
             InitMessage();
@@ -40,6 +41,7 @@ namespace PanBakery
         public static int TakeBreadOrder()
         {
             Console.WriteLine("\nWould you like to buy some breads?(Y/N)");
+
             string userInput = Console.ReadLine().ToUpper();
 
             if (userInput != "Y")
@@ -47,6 +49,26 @@ namespace PanBakery
                 return 0;
             }
 
+            Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
+
+            // Return breadAmount if valid integer.
+            int breadAmount = 0;
+            bool breadInput = Int32.TryParse(Console.ReadLine(), out breadAmount);
+            if (breadInput)
+            {
+                return breadAmount;
+            }
+
+            // Did not enter a valid integer, start over.
+            Console.WriteLine("\nPlease enter number to purchase.");
+            return TakeBreadOrder();
+        }
+        public static void AskPastry()
+        {
+            Console.WriteLine("Would you like to buy some pastries?(Y/N)");
+        }
+        public static void PurchaseBread()
+        {
             Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
 
             // Return breadAmount if valid integer.
@@ -90,6 +112,7 @@ namespace PanBakery
             Console.WriteLine("------------------------");
             Console.WriteLine($"{breadAmount} loaves of breads.");
             Console.WriteLine($"{pastryAmount} of pastries");
+
             Console.WriteLine($"Your total is ${totalAmount}");
             Console.WriteLine("\nSee you next time!");
             Console.WriteLine("------------------------");
