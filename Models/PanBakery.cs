@@ -25,12 +25,12 @@ namespace PanBakery.Models
         }
     }
 
-    // Backend logic for both Bread and Pastry.
-    class TotalOrder
+    // Backend logic for order
+    class Order
     {
         public List<Bread> Breads { get; set; }
         public List<Pastry> Pastries { get; set; }
-        public TotalOrder()
+        public Order()
         {
             Breads = new List<Bread>();
             Pastries = new List<Pastry>();

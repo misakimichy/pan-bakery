@@ -9,21 +9,21 @@ namespace PanBakery
         {
             int totalAmount = 0;
 
-            TotalOrder newOrder = new TotalOrder();
+            Order order = new Order();
 
-            InitMessage();
+            WelcomeMessage();
 
             int breadAmount = SolicitBreadOrder();
-            newOrder.AddBread(breadAmount);
+            order.AddBread(breadAmount);
 
             int pastryAmount = SolicitPastryOrder();
-            newOrder.AddPastry(pastryAmount);
+            order.AddPastry(pastryAmount);
 
-            totalAmount = newOrder.CalculateTotal();
+            totalAmount = order.CalculateTotal();
             showReceipt(breadAmount, pastryAmount, totalAmount);
         }
 
-        public static void InitMessage()
+        public static void WelcomeMessage()
         {
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("    Welcome to the Pan Bakery!   ");
