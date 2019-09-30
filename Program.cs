@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using PanBakery.Models;
 
 namespace PanBakery
@@ -17,7 +16,7 @@ namespace PanBakery
             int breadAmount = SolicitBreadOrder();
             newOrder.AddBread(breadAmount);
 
-            int pastryAmount = TakePastryOrder();
+            int pastryAmount = SolicitPastryOrder();
             newOrder.AddPastry(pastryAmount);
 
             totalAmount = newOrder.CalculateTotal();
@@ -67,11 +66,7 @@ namespace PanBakery
             Console.WriteLine("\nPlease enter number to purchase.");
             return TakeBreadOrder();
         }
-        public static void AskPastry()
-        {
-            Console.WriteLine("Would you like to buy some pastries?(Y/N)");
-        }
-        public static int TakePastryOrder()
+        public static int SolicitPastryOrder()
         {
             Console.WriteLine("\nWould you like to buy some pastries?(Y/N)");
             string userInput = Console.ReadLine().ToUpper();
@@ -80,7 +75,10 @@ namespace PanBakery
             {
                 return 0;
             }
-
+            return TakePastryOrder();
+        }
+        public static int TakePastryOrder()
+        {
             Console.WriteLine("\nHow many pastries would you like to purchase?");
 
             // Return pastryAmount if valid integer.
