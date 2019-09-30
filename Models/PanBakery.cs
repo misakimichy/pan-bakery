@@ -38,7 +38,7 @@ namespace PanBakery.Models
         // Takes user's bread purchase amount as parameter
         public void CountBread(int breadAmount)
         {
-            // Loop through and add to the bread list
+            // Loop through and add bread to Breads list
             for(int i = 0; i < breadAmount; i++)
             {
                 Bread bread = new Bread();
@@ -49,7 +49,7 @@ namespace PanBakery.Models
         // Takes user's pastry purchase amount as parameter
         public void CountPastry(int pastryAmount)
         {
-            // Loop through and add to the pastry list
+            // Loop through and add pastry to the Pastries list
             for(int i = 0; i < pastryAmount; i++)
             {
                 Pastry pastry = new Pastry();
@@ -63,7 +63,7 @@ namespace PanBakery.Models
             int breadTotalPrice = 0;
             int pastryTotalPrice = 0;
             // Bread -  Buy 2, get 1 free.
-            // Increment BreadPrice only when it's first and second bread.
+            // Increment total price only when it's first and second breads.
             for (int i = 0; i < Breads.Count; i++)
             {
                 if((i + 1) % 3 != 0)
@@ -72,7 +72,7 @@ namespace PanBakery.Models
                 }
             }
             // Pastry - Buy 1 for $2 or 3 for $5.
-            // Third pastry price is going to half.
+            // Third pastry price is going to be half.
             for (int j = 0; j < Pastries.Count; j++)
             {
                 if((j + 1) % 3 != 0)
