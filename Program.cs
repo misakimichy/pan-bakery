@@ -14,7 +14,7 @@ namespace PanBakery
 
             InitMessage();
 
-            int breadAmount = TakeBreadOrder();
+            int breadAmount = SolicitBreadOrder();
             newOrder.AddBread(breadAmount);
 
             int pastryAmount = TakePastryOrder();
@@ -38,10 +38,9 @@ namespace PanBakery
         {
             Console.WriteLine("Please type 'Y' for Yes, 'N' for No.");
         }
-        public static int TakeBreadOrder()
+        public static int SolicitBreadOrder()
         {
             Console.WriteLine("\nWould you like to buy some breads?(Y/N)");
-
             string userInput = Console.ReadLine().ToUpper();
 
             if (userInput != "Y")
@@ -49,6 +48,11 @@ namespace PanBakery
                 return 0;
             }
 
+            return TakeBreadOrder();
+        }
+
+        public static int TakeBreadOrder()
+        {
             Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
 
             // Return breadAmount if valid integer.
