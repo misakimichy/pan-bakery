@@ -8,72 +8,34 @@ namespace PanBakery
     {
         public static void Main()
         {
-            string userInput;
-            int breadCount = 0;
             int pastryCount = 0;
             int totalAmount = 0;
+
             TotalOrder newOrder = new TotalOrder();
 
             InitMessage();
-            AskBread();
-            userInput = Console.ReadLine().ToUpper();
-            if (userInput == "Y")
-            {
-                PurchaseBread();
-                // Check if the input is a number or not
-                bool breadInput = Int32.TryParse(Console.ReadLine(), out breadCount);
-                if (breadInput)
-                {
-                    newOrder.CountBread(breadCount);
-                }
-                else
-                {
-                    EnterValidNumber();
-                    PurchaseBread();
-                }
-            }
-            else if (userInput == "N")
-            {
-                AskPastry();
-                userInput = Console.ReadLine().ToUpper();
-                if (userInput == "Y")
-                {
-                    goto purchasePastry;
-                }
-                else if (userInput == "N")
-                {
-                    Console.WriteLine("Thank you for visiting us. See you next time!");
-                    return;
-                }
-                // When use types besides 'Y' or 'N'
-                else
-                {
-                    EnterValid();
-                    AskPastry();
-                    userInput = Console.ReadLine().ToUpper();
-                }
-            }
-            // When use types besides 'Y' or 'N'
-            else
-            {
-                EnterValid();
-                AskBread();
-                userInput = Console.ReadLine().ToUpper();
-            }
+
+            int breadAmount = TakeBreadOrder();
+            newOrder.AddBread(breadAmount);
+
+            // Take pastry order
+
+
+
             purchasePastry: PurchasePastry();
             // Check if the input is a number or not
             bool pastryInput = Int32.TryParse(Console.ReadLine(), out pastryCount);
             if (pastryInput)
             {
-                newOrder.CountPastry(pastryCount);
+                newOrder.AddPastry(pastryCount);
             }
             else
             {
-                EnterValidNumber();
+                Console.WriteLine("Please enter number to purchase.");
                 PurchasePastry();
             }
                 totalAmount = newOrder.CalculateTotal();
-                showReceipt(breadCount, pastryCount, totalAmount);
+                showReceipt(breadAmount, pastryCount, totalAmount);
         }
 
         public static void InitMessage()
@@ -90,13 +52,30 @@ namespace PanBakery
         {
             Console.WriteLine("Please type 'Y' for Yes, 'N' for No.");
         }
-        public static void EnterValidNumber()
-        {
-            Console.WriteLine("Please enter number to purchase.");
-        }
-        public static void AskBread()
+        public static int TakeBreadOrder()
         {
             Console.WriteLine("\nWould you like to buy some breads?(Y/N)");
+
+            string userInput = Console.ReadLine().ToUpper();
+
+            if (userInput != "Y")
+            {
+                return 0;
+            }
+
+            Console.WriteLine("\nHow many loaves of bread would you like to purchase?");
+
+            // Return breadAmount if valid integer.
+            int breadAmount = 0;
+            bool breadInput = Int32.TryParse(Console.ReadLine(), out breadAmount);
+            if (breadInput)
+            {
+                return breadAmount;
+            }
+
+            // Did not enter a valid integer, start over.
+            Console.WriteLine("\nPlease enter number to purchase.");
+            return TakeBreadOrder();
         }
         public static void AskPastry()
         {
@@ -110,10 +89,10 @@ namespace PanBakery
         {
             Console.WriteLine("\nHow many pastries would you like to purchase?");
         }
-        public static void showReceipt(int breadCount, int pastryCount, int totalAmount)
+        public static void showReceipt(int breadAmount, int pastryCount, int totalAmount)
         {
             Console.WriteLine("------------------------");
-            Console.WriteLine($"{breadCount} loaves of breads.");
+            Console.WriteLine($"{breadAmount} loaves of breads.");
             Console.WriteLine($"{pastryCount} of pastries");
             Console.WriteLine($"Your total is ${totalAmount}");
             Console.WriteLine("\nSee you next time!");

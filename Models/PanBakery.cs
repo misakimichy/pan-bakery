@@ -36,7 +36,7 @@ namespace PanBakery.Models
             Pastries = new List<Pastry>();
         }
         // Takes user's bread purchase amount as parameter
-        public void CountBread(int breadAmount)
+        public void AddBread(int breadAmount)
         {
             // Loop through and add bread to Breads list
             for(int i = 0; i < breadAmount; i++)
