@@ -33,20 +33,20 @@ namespace PanBakery
             Console.WriteLine("Each pastry is $2. Buy 1 for $2 or 3 for $5!");
             Console.WriteLine("-----------------------------------");
         }
-        public static void EnterValid()
-        {
-            Console.WriteLine("Please type 'Y' for Yes, 'N' for No.");
-        }
         public static int SolicitBreadOrder()
         {
             Console.WriteLine("\nWould you like to buy some breads?(Y/N)");
             string userInput = Console.ReadLine().ToUpper();
 
-            if (userInput != "Y")
+            if (userInput == "N")
             {
                 return 0;
             }
-
+            else if (userInput != "Y")
+            {
+                Console.WriteLine("\nPlease type 'Y' for Yes, 'N' for No.");
+                return SolicitBreadOrder();
+            }
             return TakeBreadOrder();
         }
 
@@ -57,23 +57,26 @@ namespace PanBakery
             // Return breadAmount if valid integer.
             int breadAmount = 0;
             bool breadInput = Int32.TryParse(Console.ReadLine(), out breadAmount);
-            if (breadInput)
+            if (!breadInput)
             {
-                return breadAmount;
+                Console.WriteLine("\nPlease enter number to purchase.");
+                return TakeBreadOrder();
             }
-
-            // Did not enter a valid integer, start over.
-            Console.WriteLine("\nPlease enter number to purchase.");
-            return TakeBreadOrder();
+            return breadAmount;
         }
         public static int SolicitPastryOrder()
         {
             Console.WriteLine("\nWould you like to buy some pastries?(Y/N)");
             string userInput = Console.ReadLine().ToUpper();
 
-            if (userInput != "Y")
+            if (userInput == "N")
             {
                 return 0;
+            }
+            else if (userInput != "Y")
+            {
+                Console.WriteLine("\nPlease type 'Y' for Yes, 'N' for No.");
+                return SolicitPastryOrder();
             }
             return TakePastryOrder();
         }
@@ -84,21 +87,18 @@ namespace PanBakery
             // Return pastryAmount if valid integer.
             int pastryAmount = 0;
             bool breadInput = Int32.TryParse(Console.ReadLine(), out pastryAmount);
-            if (breadInput)
+            if (!breadInput)
             {
-                return pastryAmount;
+                Console.WriteLine("\nPlease enter number to purchase.");
+                return TakePastryOrder();
             }
-
-            // Did not enter a valid integer, start over.
-            Console.WriteLine("\nPlease enter number to purchase.");
-            return TakePastryOrder();
+            return pastryAmount;
         }
         public static void showReceipt(int breadAmount, int pastryAmount, int totalAmount)
         {
             Console.WriteLine("------------------------");
             Console.WriteLine($"{breadAmount} loaves of breads.");
             Console.WriteLine($"{pastryAmount} of pastries");
-
             Console.WriteLine($"Your total is ${totalAmount}");
             Console.WriteLine("\nSee you next time!");
             Console.WriteLine("------------------------");
